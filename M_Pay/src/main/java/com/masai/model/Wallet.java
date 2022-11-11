@@ -1,5 +1,6 @@
 package com.masai.model;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -15,79 +17,27 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.ToString;
 
+@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
+@ToString
 public class Wallet {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer walletId;
-	private Integer balance;
+	private int walletId;
+	private BigDecimal balance;
 	
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "customer_id",referencedColumnName = "id")
 	@JsonIgnore
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "wallet")
 	private Customer customer;
-	 
-	@OneToMany(cascade = CascadeType.ALL)
-	private  List<BeneficiaryDetails> beneficiaryDetails =new ArrayList<>();
 	
+	@OneToMany(cascade = CascadeType.ALL,mappedBy = "wallet",orphanRemoval = true)
 	@JsonIgnore
-	@OneToMany(cascade = CascadeType.ALL , mappedBy="wallet")
-	private List<Transaction> transactions = new ArrayList<>();
-	
-	
-
-
-	public Integer getWalletId() {
-		return walletId;
-	}
-
-
-	public void setWalletId(Integer walletId) {
-		this.walletId = walletId;
-	}
-
-
-	public Integer getBalance() {
-		return balance;
-	}
-
-
-	public void setBalance(Integer balance) {
-		this.balance = balance;
-	}
-
-
-	public Customer getCustomer() {
-		return customer;
-	}
-
-
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
-
-
-
-
-	public List<Transaction> getTransactions() {
-		return transactions;
-	}
-
-
-
-	public Wallet() {
-		
-	}
-
-	
-	
-	
-	
+	private List<BeneficiaryDetails> beneficiary=new ArrayList<>();
 }

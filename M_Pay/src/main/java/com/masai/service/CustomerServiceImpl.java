@@ -5,41 +5,39 @@ import org.springframework.stereotype.Service;
 
 import com.masai.Exceptions.CustomerException;
 import com.masai.dao.CustomerRepository;
-import com.masai.model.BeneficiaryDetails;
+import com.masai.dao.WalletRepository;
+import com.masai.dto.CustomerSignInDto;
 import com.masai.model.Customer;
-import com.masai.model.SigninDto;
+import com.masai.model.Wallet;
 
 @Service
 public class CustomerServiceImpl implements CustomerService{
 	@Autowired
-	private CustomerRepository repo;
+	private CustomerRepository cuRepository;
+	@Autowired
+	private WalletRepository wrepo;
 
 	@Override
-	public BeneficiaryDetails registerCustomer(Customer customer)throws CustomerException {
-		Customer existCust=repo.findByMobileNumber(customer.getMobileNumber());
-		if(existCust!=null) {
-			throw new CustomerException("Customer already registered with mobile number : "+customer.getMobileNumber());
+	public Customer registerCustomer(Customer customer) throws CustomerException {
+		Customer cus=cuRepository.findByMobile(customer.getMobile());
+		if(cus!=null) {
+			throw new CustomerException("Customer already registered with mobile number : "+customer.getMobile());
 		}
-		repo.save(customer);
-		return new BeneficiaryDetails(customer.getMobileNumber(), customer.getName());
+		Wallet w=customer.getWallets();
+		w.setCustomer(customer);
+		wrepo.save(w);
+		return cuRepository.save(customer);
 	}
-
+	
 	@Override
-	public BeneficiaryDetails signinCustomer(SigninDto signin) throws CustomerException {
-		Customer c=repo.findByMobileNumber(signin.getMobileNumber());
-		if(c==null) {
-			throw new CustomerException("Customer not registered");
+	public Customer validateCustomer(CustomerSignInDto customer) throws CustomerException {
+		Customer cus=cuRepository.findByMobile(customer.getMobile());
+		if(cus==null) {
+			throw new CustomerException("Customer is not registered..");
 		}
-
-		if(!c.getPassword().equals(signin.getPassword())) {
+		if(!cus.getCustomerPassword().equals(customer.getPassword())) {
 			throw new CustomerException("Password is incorrect..");
 		}
-		return new BeneficiaryDetails(c.getMobileNumber(),c.getName());
+		return cus;
 	}
-
-
-
-
-	
-	
 }

@@ -1,13 +1,10 @@
 package com.masai.service;
 
-
-
-import com.masai.model.BeneficiaryDetails;
-import com.masai.model.Customer;
-import com.masai.model.SigninDto;
 import com.masai.Exceptions.CustomerException;
+import com.masai.dto.CustomerSignInDto;
+import com.masai.model.Customer;
 
 public interface CustomerService {
-	public BeneficiaryDetails registerCustomer(Customer customer)throws CustomerException;
-	public BeneficiaryDetails signinCustomer(SigninDto signin)throws CustomerException;
+	public Customer registerCustomer(Customer customer)throws CustomerException;
+	public Customer validateCustomer(CustomerSignInDto customer)throws CustomerException;
 }
