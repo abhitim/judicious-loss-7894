@@ -35,4 +35,56 @@ public class BeneficiaryDetails {
 	@ManyToOne
 	@JoinColumn(name = "wallet_id")
 	private Wallet wallet;
+
+	public BeneficiaryDetails(int id,
+			@NotBlank(message = "Name should not be blank") @NotNull(message = "Name should not be null") @Size(min = 3, max = 20, message = "Name should be minimum 3 and maximum 20 characters") String name,
+			@Size(min = 10, max = 10, message = "Mobile number should be 10 digits") @NotBlank(message = "Mobile number should not be blank") @NotNull(message = "Mobile number should not be null") String mobileNumber,
+			Wallet wallet) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.mobileNumber = mobileNumber;
+		this.wallet = wallet;
+	}
+
+	public BeneficiaryDetails() {
+		super();
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getMobileNumber() {
+		return mobileNumber;
+	}
+
+	public void setMobileNumber(String mobileNumber) {
+		this.mobileNumber = mobileNumber;
+	}
+
+	public Wallet getWallet() {
+		return wallet;
+	}
+
+	public void setWallet(Wallet wallet) {
+		this.wallet = wallet;
+	}
+	
+	
+	
+	
+	
 }

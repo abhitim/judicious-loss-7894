@@ -5,9 +5,9 @@ import org.springframework.stereotype.Service;
 
 import com.masai.Exceptions.CustomerException;
 import com.masai.dao.CustomerRepository;
-import com.masai.dao.WalletRepository;
-import com.masai.dto.CustomerSignInDto;
+import com.masai.dao.WalletDao;
 import com.masai.model.Customer;
+import com.masai.model.SigninDto;
 import com.masai.model.Wallet;
 
 @Service
@@ -15,7 +15,7 @@ public class CustomerServiceImpl implements CustomerService{
 	@Autowired
 	private CustomerRepository cuRepository;
 	@Autowired
-	private WalletRepository wrepo;
+	private WalletDao wrepo;
 
 	@Override
 	public Customer registerCustomer(Customer customer) throws CustomerException {
@@ -30,8 +30,8 @@ public class CustomerServiceImpl implements CustomerService{
 	}
 	
 	@Override
-	public Customer validateCustomer(CustomerSignInDto customer) throws CustomerException {
-		Customer cus=cuRepository.findByMobile(customer.getMobile());
+	public Customer validateCustomer(SigninDto customer) throws CustomerException {
+		Customer cus=cuRepository.findByMobile(customer.getMobileNo());
 		if(cus==null) {
 			throw new CustomerException("Customer is not registered..");
 		}

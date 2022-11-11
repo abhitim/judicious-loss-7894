@@ -12,8 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.masai.Exceptions.CustomerException;
-import com.masai.dto.CustomerSignInDto;
+
 import com.masai.model.Customer;
+import com.masai.model.SigninDto;
 import com.masai.service.CustomerService;
 
 @RestController
@@ -33,7 +34,7 @@ public class CustomerController {
 	}
 	
 	@PostMapping("/validate")
-	public ResponseEntity<Customer> validateCustomer(@Valid @RequestBody CustomerSignInDto dto) throws CustomerException{
+	public ResponseEntity<Customer> validateCustomer(@Valid @RequestBody SigninDto dto) throws CustomerException{
 		return new ResponseEntity<Customer>(service.validateCustomer(dto),HttpStatus.OK);
 	}
 }

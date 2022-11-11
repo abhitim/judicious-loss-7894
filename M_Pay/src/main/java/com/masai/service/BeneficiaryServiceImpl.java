@@ -8,17 +8,18 @@ import org.springframework.stereotype.Service;
 import com.masai.Exceptions.BeneficiaryException;
 import com.masai.dao.BeneficiaryRepository;
 import com.masai.dao.CustomerRepository;
-import com.masai.dao.WalletRepository;
+import com.masai.dao.WalletDao;
 import com.masai.model.BeneficiaryDetails;
 import com.masai.model.Customer;
 import com.masai.model.Wallet;
+
 
 @Service
 public class BeneficiaryServiceImpl implements BeneficiaryService{
 	@Autowired
 	private BeneficiaryRepository repository;
 	@Autowired
-	private WalletRepository repo;
+	private WalletDao repo;
 	@Autowired
 	private CustomerRepository crepo;
 
@@ -31,7 +32,7 @@ public class BeneficiaryServiceImpl implements BeneficiaryService{
 		}
 		
 		Wallet w=beDetails.getWallet();
-		w.getBeneficiary().add(beneDetails);
+		w.getBd().add(beneDetails);
 		repo.save(w);
 		
 		return repository.save(beDetails);
@@ -65,7 +66,7 @@ public class BeneficiaryServiceImpl implements BeneficiaryService{
 			throw new BeneficiaryException("Beneficiary not exist..");
 		}
 		Wallet w=cus.getWallets();
-		List<BeneficiaryDetails> benelist= w.getBeneficiary();
+		List<BeneficiaryDetails> benelist= w.getBd();
 		
 		if(benelist.isEmpty()) {
 			throw new BeneficiaryException("Beneficiary list is empty..");

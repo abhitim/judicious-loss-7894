@@ -1,23 +1,22 @@
 package com.masai.service;
 
-import java.time.LocalDate;
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
-import com.masai.Exceptions.IllegalTransactionException;
+import com.masai.Exceptions.InsufficientAmountException;
+import com.masai.Exceptions.TransactionNotFoundException;
+import com.masai.Exceptions.UserNotFoundException;
+import com.masai.Exceptions.WalletNotFound;
 import com.masai.model.Transaction;
-import com.masai.model.Wallet;
 
-@Service
 public interface TransactionService {
 
-	public Transaction addTransaction(Transaction transaction) throws IllegalTransactionException;
-
-	public List<Transaction> viewTransactionByDate(LocalDate from, LocalDate to);
 	
-	public List<Transaction> viewAllTransaction(Wallet wallet);
 
-	public List<Transaction> viewAllTransaction(String type);
-
+	public Transaction addTansaction(Transaction trans) throws InsufficientAmountException;
+	
+	public List<Transaction> viewAllTransactions(String key,Integer walletId) throws TransactionNotFoundException, UserNotFoundException, WalletNotFound;
+	
+	public List<Transaction> viewTransactionByDate(Integer walletId, String date)throws TransactionNotFoundException, WalletNotFound;
+	
+	public List<Transaction> viewAllTransactions()throws TransactionNotFoundException;
 }

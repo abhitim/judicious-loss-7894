@@ -1,20 +1,18 @@
 package com.masai.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class SigninDto {
-	private String mobileNumber;
+
+	private String mobileNo;
 	private String password;
-	public String getMobileNumber() {
-		return mobileNumber;
+	//private String role;
+	public String getMobileNo() {
+		return mobileNo;
 	}
-	public void setMobileNumber(String mobileNumber) {
-		this.mobileNumber = mobileNumber;
+	public void setMobileNo(String mobileNo) {
+		this.mobileNo = mobileNo;
 	}
 	public String getPassword() {
 		return password;
@@ -22,16 +20,13 @@ public class SigninDto {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public SigninDto(String mobileNumber, String password) {
+	public SigninDto(String mobileNo, String password) {
 		super();
-		this.mobileNumber = mobileNumber;
+		this.mobileNo = mobileNo;
 		this.password = password;
 	}
 	public SigninDto() {
-		super();
+		
 	}
-	
-	
-	
 	
 }
