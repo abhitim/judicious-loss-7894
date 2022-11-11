@@ -7,19 +7,24 @@ public class Transaction {
 	private Integer transactionId;
 	private String transactionType;
 	private LocalDate transactionDate;
+	
+	
+	private Wallet wallet;
 	private Double amount;
 	private String description;
 
 	public Transaction() {
-		// TODO Auto-generated constructor stub
+		super();
+
 	}
 
-	public Transaction(Integer transactionId, String transactionType, LocalDate transactionDate, Double amount,
-			String description) {
+	public Transaction(Integer transactionId, String transactionType, LocalDate transactionDate, Wallet wallet,
+			Double amount, String description) {
 		super();
 		this.transactionId = transactionId;
 		this.transactionType = transactionType;
 		this.transactionDate = transactionDate;
+		this.wallet = wallet;
 		this.amount = amount;
 		this.description = description;
 	}
@@ -48,6 +53,14 @@ public class Transaction {
 		this.transactionDate = transactionDate;
 	}
 
+	public Wallet getWallet() {
+		return wallet;
+	}
+
+	public void setWallet(Wallet wallet) {
+		this.wallet = wallet;
+	}
+
 	public Double getAmount() {
 		return amount;
 	}
@@ -62,12 +75,6 @@ public class Transaction {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	@Override
-	public String toString() {
-		return "Transaction [transactionId=" + transactionId + ", transactionType=" + transactionType
-				+ ", transactionDate=" + transactionDate + ", amount=" + amount + ", description=" + description + "]";
 	}
 
 }
