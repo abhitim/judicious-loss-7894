@@ -6,13 +6,12 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.masai.Exceptions.LoginException;
-import com.masai.dao.CustomerRepository;
+import com.masai.dao.CustomerDao;
 import com.masai.dao.SessionDao;
-
+import com.masai.exceptions.LoginException;
 import com.masai.model.CurrentUserSession;
 import com.masai.model.Customer;
-import com.masai.model.SigninDto;
+import com.masai.model.LoginDTO;
 
 import net.bytebuddy.utility.RandomString;
 
@@ -20,7 +19,7 @@ import net.bytebuddy.utility.RandomString;
 public class LoginServiceImpl implements LoginService{
 
 	@Autowired
-	private CustomerRepository cDao;
+	private CustomerDao cDao;
 	
 	@Autowired
 	private SessionDao sDao;
@@ -28,10 +27,10 @@ public class LoginServiceImpl implements LoginService{
 	
 	
 	@Override
-	public String logIntoAccount(SigninDto dto)throws LoginException{
+	public String logIntoAccount(LoginDTO dto)throws LoginException{
 		
 		
-		Customer existingCustomer= cDao.findByMobile(dto.getMobileNo());
+		Customer existingCustomer= cDao.findByMobileNo(dto.getMobileNo());
 		
 		if(existingCustomer == null) {
 			
@@ -43,7 +42,7 @@ public class LoginServiceImpl implements LoginService{
 		
 		
 		
-		Optional<CurrentUserSession> validCustomerSessionOpt =  sDao.findById(existingCustomer.getId());
+		Optional<CurrentUserSession> validCustomerSessionOpt =  sDao.findById(existingCustomer.getCustomerId());
 		
 		
 		
@@ -55,17 +54,17 @@ public class LoginServiceImpl implements LoginService{
 			
 		}
 		
-		if(existingCustomer.getCustomerPassword().equals(dto.getPassword())) {
+		if(existingCustomer.getPassword().equals(dto.getPassword())) {
 			
 			String key= RandomString.make(6);
 			
 			
 			
-			CurrentUserSession currentUserSession = new CurrentUserSession(existingCustomer.getId(),key,LocalDateTime.now());
+			CurrentUserSession currentUserSession = new CurrentUserSession(existingCustomer.getCustomerId(),key,LocalDateTime.now());
 			
 			sDao.save(currentUserSession);
 
-			return currentUserSession.toString();
+			return key;
 		}
 		else
 			throw new LoginException("Please Enter a valid password");

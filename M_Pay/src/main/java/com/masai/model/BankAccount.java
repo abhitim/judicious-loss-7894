@@ -41,7 +41,7 @@ public class BankAccount {
 	
 	
 	
-	@OneToOne(cascade = CascadeType.ALL ,mappedBy = "bankAccount")
+	@OneToOne(cascade = CascadeType.ALL )
 	private Wallet wallet;
 
 

@@ -6,14 +6,13 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.masai.Exceptions.BankAccountNotFound;
-import com.masai.Exceptions.InsufficientAmountException;
 import com.masai.dao.BankAccountDao;
-import com.masai.dao.CustomerRepository;
+import com.masai.dao.CustomerDao;
 import com.masai.dao.SessionDao;
 import com.masai.dao.TransactionDao;
 import com.masai.dao.WalletDao;
-
+import com.masai.exceptions.BankAccountNotFound;
+import com.masai.exceptions.InsufficientAmountException;
 import com.masai.model.BankAccount;
 import com.masai.model.Customer;
 import com.masai.model.Transaction;
@@ -26,7 +25,7 @@ public class WalletServiceImpl implements WalletService {
 	private SessionDao sDao;
 
 	@Autowired
-	private CustomerRepository customerDao;
+	private CustomerDao customerDao;
 	
 	@Autowired
 	private BankAccountDao bankDao;
@@ -45,7 +44,7 @@ public class WalletServiceImpl implements WalletService {
 		Integer UserId = sDao.findByUuid(key).getUserId();
 		Optional<Customer> customer = customerDao.findById(UserId);
 		
-		Integer balance = customer.get().getWallets().getBalance();
+		Integer balance = customer.get().getWallet().getBalance();
 			return balance;
 		
 	}
@@ -58,7 +57,7 @@ public class WalletServiceImpl implements WalletService {
 		Integer UserId = sDao.findByUuid(key).getUserId();
 		Optional<Customer> customer = customerDao.findById(UserId);
 		
-		Wallet wallet = customer.get().getWallets();
+		Wallet wallet = customer.get().getWallet();
 		
 		
 		
@@ -110,7 +109,7 @@ public class WalletServiceImpl implements WalletService {
 		Integer UserId = sDao.findByUuid(key).getUserId();
 		Optional<Customer> customer = customerDao.findById(UserId);
 		
-		Wallet wallet = customer.get().getWallets();
+		Wallet wallet = customer.get().getWallet();
 		
 		
 	    BankAccount ListofBank =   bankDao.getById(Accno);
@@ -154,9 +153,9 @@ public class WalletServiceImpl implements WalletService {
 
 	@Override
 	public Customer getCustomerbyWalletId(Integer walletId) {
-		Optional<Wallet> wallet = walletDao.findById(walletId);
+		Wallet wallet = walletDao.getById(walletId);
 
-		Customer customer = wallet.get().getCustomer();
+		Customer customer = wallet.getCustomer();
 		
 		return customer;
 	}

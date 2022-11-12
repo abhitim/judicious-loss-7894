@@ -11,9 +11,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.masai.Exceptions.InsufficientAmountException;
-import com.masai.Exceptions.TransactionNotFoundException;
-import com.masai.Exceptions.WalletNotFound;
+import com.masai.exceptions.InsufficientAmountException;
+import com.masai.exceptions.TransactionNotFoundException;
+import com.masai.exceptions.UserNotFoundException;
+import com.masai.exceptions.WalletNotFound;
 import com.masai.model.Transaction;
 import com.masai.service.TransactionService;
 
@@ -32,11 +33,11 @@ public class TransactionController {
 	}
 	
 	
-	@GetMapping("/getTransactions")
+	@GetMapping("/transactions")
 	ResponseEntity<List<Transaction>> viewAllTransactionsHandler() throws TransactionNotFoundException{
 		
-		List<Transaction> TransactionsList =   transService.viewAllTransactions();
-		return new ResponseEntity<List<Transaction>>(TransactionsList,HttpStatus.ACCEPTED);
+		List<Transaction> Transactions =   transService.viewAllTransactions();
+		return new ResponseEntity<List<Transaction>>(Transactions,HttpStatus.OK);
 	}
 	
 	

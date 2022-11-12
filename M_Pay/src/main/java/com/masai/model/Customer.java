@@ -30,7 +30,7 @@ public class Customer {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Wallet wallet;
 
-	public Integer getId() {
+	public Integer getCustomerId() {
 		return customerId;
 	}
 
@@ -46,15 +46,7 @@ public class Customer {
 		this.name = name;
 	}
 
-	public String setCustomerPassword() {
-		return mobileNo;
-	}
-
-	public void setMobile(String mobileNo) {
-		this.mobileNo = mobileNo;
-	}
-
-	public String getMobile() {
+	public String getMobileNo() {
 		return mobileNo;
 	}
 
@@ -62,19 +54,19 @@ public class Customer {
 		this.mobileNo = mobileNo;
 	}
 
-	public String getCustomerPassword() {
+	public String getPassword() {
 		return password;
 	}
 
-	public void setCustomerPassword(String password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 
-	public Wallet getWallets() {
+	public Wallet getWallet() {
 		return wallet;
 	}
 
-	public void setWallets(Wallet wallet) {
+	public void setWallet(Wallet wallet) {
 		this.wallet = wallet;
 	}
 

@@ -9,38 +9,58 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.masai.Exceptions.BeneficiaryException;
+import com.masai.exceptions.BeneficiaryException;
 import com.masai.model.BeneficiaryDetails;
 import com.masai.model.Customer;
 import com.masai.service.BeneficiaryService;
 
 @RestController
-@RequestMapping("/beneficiary")
+@RequestMapping("/wallet")
 public class BeneficiaryController {
 	@Autowired
-	private BeneficiaryService service;
+	private BeneficiaryService bs;
 	
-	@PostMapping("/add")
-	public ResponseEntity<BeneficiaryDetails> addBeneficiary(@Valid @RequestBody BeneficiaryDetails be) throws BeneficiaryException{
-		return new ResponseEntity<BeneficiaryDetails>(service.addBeneficiary(be),HttpStatus.CREATED);
+	@PostMapping("/addbeneficiary")
+	public ResponseEntity<BeneficiaryDetails> bdStore(@Valid @RequestBody BeneficiaryDetails bd) throws BeneficiaryException {
+		
+		BeneficiaryDetails bdetails = bs.addBeneficiary(bd);
+		
+		return new ResponseEntity<BeneficiaryDetails>(bdetails,HttpStatus.CREATED);
+		
 	}
 	
-	@DeleteMapping("/remove")
-	public ResponseEntity<BeneficiaryDetails> deleteBeneficiary(@Valid @RequestBody BeneficiaryDetails be) throws BeneficiaryException{
-		return new ResponseEntity<BeneficiaryDetails>(service.deleteBeneficiary(be),HttpStatus.OK);
+	@DeleteMapping("/deletebeneficiary")
+	public ResponseEntity<BeneficiaryDetails> bdDelete(@Valid @RequestBody BeneficiaryDetails bd ) throws BeneficiaryException {
+		
+		BeneficiaryDetails b = bs.deleteBeneficiary(bd);
+		
+		return new ResponseEntity<BeneficiaryDetails>(b,HttpStatus.OK);
+
 	}
-	@GetMapping("/get")
-	public ResponseEntity<BeneficiaryDetails> veiwBeneficiary(@RequestParam String mobile) throws BeneficiaryException{
-		return new ResponseEntity<BeneficiaryDetails>( service.veiwBeneficiary(mobile),HttpStatus.OK);
+	
+	@GetMapping("/viewbeneficiary/{mobileNumber}")
+	public ResponseEntity<BeneficiaryDetails> bdgetbyId(@Valid @PathVariable("mobileNumber") String num) throws BeneficiaryException{
+		
+		BeneficiaryDetails b = bs.viewBeneficiary(num);
+		
+		return new ResponseEntity<BeneficiaryDetails>(b,HttpStatus.OK);
+		
 	}
-	@PostMapping("/all")
-	public ResponseEntity<List<BeneficiaryDetails>> veiwAllBeneficiaty(@Valid @RequestBody Customer cust) throws BeneficiaryException{
-		return new ResponseEntity<List<BeneficiaryDetails>>(service.veiwAllBeneficiary(cust),HttpStatus.OK);
+	
+	@PostMapping("/viewallbeneficiary")
+	public ResponseEntity<List<BeneficiaryDetails>> getallbd(@Valid @RequestBody Customer customer){
+		
+		List<BeneficiaryDetails> b = bs.viewAllBeneficiary(customer);
+		
+		return new ResponseEntity<List<BeneficiaryDetails>>(b,HttpStatus.OK);
+		
 	}
+	
+	
 }

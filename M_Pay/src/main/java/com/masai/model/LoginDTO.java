@@ -3,7 +3,7 @@ package com.masai.model;
 import lombok.Data;
 
 @Data
-public class SigninDto {
+public class LoginDTO {
 
 	private String mobileNo;
 	private String password;
@@ -20,12 +20,12 @@ public class SigninDto {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public SigninDto(String mobileNo, String password) {
+	public LoginDTO(String mobileNo, String password) {
 		super();
 		this.mobileNo = mobileNo;
 		this.password = password;
 	}
-	public SigninDto() {
+	public LoginDTO() {
 		
 	}
 	

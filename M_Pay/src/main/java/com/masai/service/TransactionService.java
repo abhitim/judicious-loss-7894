@@ -2,10 +2,10 @@ package com.masai.service;
 
 import java.util.List;
 
-import com.masai.Exceptions.InsufficientAmountException;
-import com.masai.Exceptions.TransactionNotFoundException;
-import com.masai.Exceptions.UserNotFoundException;
-import com.masai.Exceptions.WalletNotFound;
+import com.masai.exceptions.InsufficientAmountException;
+import com.masai.exceptions.TransactionNotFoundException;
+import com.masai.exceptions.UserNotFoundException;
+import com.masai.exceptions.WalletNotFound;
 import com.masai.model.Transaction;
 
 public interface TransactionService {

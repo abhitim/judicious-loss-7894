@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.masai.Exceptions.BankAccountNotFound;
-import com.masai.Exceptions.InsufficientAmountException;
-import com.masai.Exceptions.InvalidAccountException;
+import com.masai.exceptions.BankAccountNotFound;
+import com.masai.exceptions.InsufficientAmountException;
+import com.masai.exceptions.InvalidAccountException;
 import com.masai.model.Customer;
 import com.masai.service.WalletService;
 
@@ -25,7 +25,7 @@ public class WalletController {
 	@GetMapping("/showbalance")
 	public Integer showBalanceController(@RequestParam(required = false) String key) throws InvalidAccountException {
 		
-		return (int) walletService.showBalance(key);
+		return walletService.showBalance(key);
 		
 
 	}

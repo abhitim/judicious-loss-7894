@@ -1,43 +1,70 @@
 package com.masai.service;
 
+ 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.masai.Exceptions.CustomerException;
-import com.masai.dao.CustomerRepository;
+import com.masai.dao.CustomerDao;
+import com.masai.dao.SessionDao;
 import com.masai.dao.WalletDao;
+import com.masai.exceptions.CustomerException;
+import com.masai.model.CurrentUserSession;
 import com.masai.model.Customer;
-import com.masai.model.SigninDto;
-import com.masai.model.Wallet;
 
 @Service
-public class CustomerServiceImpl implements CustomerService{
-	@Autowired
-	private CustomerRepository cuRepository;
-	@Autowired
-	private WalletDao wrepo;
+public class CustomerServiceImpl implements CustomerService {
 
-	@Override
-	public Customer registerCustomer(Customer customer) throws CustomerException {
-		Customer cus=cuRepository.findByMobile(customer.getMobile());
-		if(cus!=null) {
-			throw new CustomerException("Customer already registered with mobile number : "+customer.getMobile());
-		}
-		Wallet w=customer.getWallets();
-		w.setCustomer(customer);
-		wrepo.save(w);
-		return cuRepository.save(customer);
-	}
+	@Autowired
+	private CustomerDao cDao;
+	
+	@Autowired
+	private SessionDao sDao;
+	
+	@Autowired
+	private WalletDao wDao;
 	
 	@Override
-	public Customer validateCustomer(SigninDto customer) throws CustomerException {
-		Customer cus=cuRepository.findByMobile(customer.getMobileNo());
-		if(cus==null) {
-			throw new CustomerException("Customer is not registered..");
+	public Customer createCustomer(Customer customer)throws CustomerException {
+		
+		Customer existingCustomer= cDao.findByMobileNo(customer.getMobileNo());
+		wDao.save(customer.getWallet()) ;
+		
+		if(existingCustomer != null) 
+			throw new CustomerException("Customer Already Registered with Mobile number");
+			
+		
+		
+		
+			return cDao.save(customer);
+			
+			 
 		}
-		if(!cus.getCustomerPassword().equals(customer.getPassword())) {
-			throw new CustomerException("Password is incorrect..");
+
+	@Override
+	public Customer updateCustomer(Customer customer, String key) throws CustomerException{
+	
+		CurrentUserSession loggedInUser= sDao.findByUuid(key);
+	
+	
+		
+		if(loggedInUser == null) {
+			throw new CustomerException("Please provide a valid key to update a customer");
 		}
-		return cus;
+		
+		
+	
+		
+		if(customer.getCustomerId() == loggedInUser.getUserId()) {
+			//If LoggedInUser id is same as the id of supplied Customer which we want to update
+			return cDao.save(customer);
+		}
+		else
+			throw new CustomerException("Invalid Customer Details, please login first");
+	
 	}
-}
+		
+		
+		
+	}
+
+

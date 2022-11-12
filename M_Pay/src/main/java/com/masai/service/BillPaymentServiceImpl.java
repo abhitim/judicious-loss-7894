@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.masai.dao.BillPaymentDao;
 import com.masai.dao.SessionDao;
 import com.masai.dao.WalletDao;
-
+import com.masai.exceptions.BillPaymentNotFoundException;
 import com.masai.model.BillPayment;
 import com.masai.model.Transaction;
 import com.masai.model.Wallet;
@@ -91,11 +91,11 @@ return "Payment Done Successfully..."+"\n";
 
 
 	@Override
-	public List<BillPayment> viewBillPayment() throws com.masai.Exceptions.BillPaymentNotFoundException {
+	public List<BillPayment> viewBillPayment() throws BillPaymentNotFoundException {
 		
 		List<BillPayment> billList = billDao.findAll();
 		if(billList.size()==0) {
-			throw new com.masai.Exceptions.BillPaymentNotFoundException("No BillPaymets in the List ");
+			throw new BillPaymentNotFoundException("No BillPaymets in the List ");
 		}
 		
 				

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.masai.Exceptions.BillPaymentNotFoundException;
+import com.masai.exceptions.BillPaymentNotFoundException;
 import com.masai.model.BillPayment;
 import com.masai.service.BillPaymentService;
 
@@ -28,8 +28,11 @@ public class BillPaymentController {
 	
 
 	@PostMapping("/bills/{walletId}")
-	public String addBill(@RequestBody BillPayment pay,@PathVariable("walletId") Integer walletId) {
-		return billPayService.addBillPayment(pay,walletId);
+	public String addBill(@RequestBody BillPayment pay,
+													@PathVariable("walletId") Integer wallId
+
+			) {
+		return billPayService.addBillPayment(pay,wallId);
 	}
 	
 	
@@ -44,10 +47,10 @@ public class BillPaymentController {
 	
 	
 	
-	@GetMapping("/allbills")
+	@GetMapping("/bills")
 	ResponseEntity<List<BillPayment>> getBillDetails() throws BillPaymentNotFoundException{
-		List<BillPayment> Allbills = billPayService.viewBillPayment();
-		return new ResponseEntity<>(Allbills, HttpStatus.OK);
+		List<BillPayment> bills = billPayService.viewBillPayment();
+		return new ResponseEntity<>(bills, HttpStatus.OK);
 		
 	}
 

@@ -1,9 +1,8 @@
-package com.masai.Exceptions;
+package com.masai.exceptions;
 
-public class BeneficiaryException extends Exception{
+public class BeneficiaryException extends Exception {
 
 	public BeneficiaryException() {
-		super();
 		// TODO Auto-generated constructor stub
 	}
 
@@ -11,5 +10,6 @@ public class BeneficiaryException extends Exception{
 		super(message);
 		// TODO Auto-generated constructor stub
 	}
+	
 	
 }

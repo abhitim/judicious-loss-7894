@@ -5,11 +5,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.masai.Exceptions.BankAccountNotFound;
 import com.masai.dao.BankAccountDao;
 import com.masai.dao.SessionDao;
 import com.masai.dao.WalletDao;
-
+import com.masai.exceptions.BankAccountNotFound;
 import com.masai.model.BankAccount;
 import com.masai.model.CurrentUserSession;
 import com.masai.model.Wallet;

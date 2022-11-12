@@ -9,14 +9,14 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.masai.Exceptions.InsufficientAmountException;
-import com.masai.Exceptions.TransactionNotFoundException;
-import com.masai.Exceptions.UserNotFoundException;
-import com.masai.Exceptions.WalletNotFound;
 import com.masai.dao.SessionDao;
 import com.masai.dao.TransactionDao;
 import com.masai.dao.WalletDao;
-
+import com.masai.exceptions.BeneficiaryException;
+import com.masai.exceptions.InsufficientAmountException;
+import com.masai.exceptions.TransactionNotFoundException;
+import com.masai.exceptions.UserNotFoundException;
+import com.masai.exceptions.WalletNotFound;
 import com.masai.model.CurrentUserSession;
 import com.masai.model.Transaction;
 import com.masai.model.Wallet;
@@ -63,8 +63,25 @@ public class TransactionServiceImpl implements TransactionService{
 		
 		
 		
-	
-
+//		
+//		if(tDao.findById(trans.getTransactionId()).isEmpty()) {
+//			
+//			Wallet w = trans.getWallet();
+//			
+//			
+//			
+//			w.getTransactions().add(trans);
+//
+//			
+//			return tDao.save(trans);
+//			}
+//		
+//		
+//		
+//	else {
+//		throw new InsufficientAmountException("InsufficientAmountException balance");
+//	}
+	 
 		 
 	}
 

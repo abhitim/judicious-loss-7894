@@ -6,14 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.masai.Exceptions.LoginException;
-import com.masai.model.SigninDto;
+import com.masai.exceptions.LoginException;
+import com.masai.model.LoginDTO;
 import com.masai.service.LoginService;
 
 @RestController
@@ -22,20 +21,20 @@ public class LoginController {
 	@Autowired
 	private LoginService customerLogin;
 	
-	@PostMapping("/signIn")
-	public ResponseEntity<String> logInCustomer(@RequestBody SigninDto dto) throws LoginException {
+	@PostMapping("/login")
+	public ResponseEntity<String> logInCustomer(@RequestBody LoginDTO dto) throws LoginException {
 		
-		String key = customerLogin.logIntoAccount(dto);
+		String result = customerLogin.logIntoAccount(dto);
 		
 
 		
-		return new ResponseEntity<String>(key,HttpStatus.ACCEPTED );
+		return new ResponseEntity<String>(result,HttpStatus.OK );
 		
 		
 	}
 	
-	@PostMapping("/logout/{key}")
-	public String logoutCustomer(@PathVariable("key") String key) throws LoginException {
+	@PostMapping("/logout")
+	public String logoutCustomer(@RequestParam(required = false) String key) throws LoginException {
 		return customerLogin.logOutFromAccount(key);
 		
 	}

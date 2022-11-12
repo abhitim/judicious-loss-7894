@@ -1,77 +1,91 @@
 package com.masai.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.masai.Exceptions.BeneficiaryException;
-import com.masai.dao.BeneficiaryRepository;
-import com.masai.dao.CustomerRepository;
+import com.masai.dao.BeneficiaryDao;
 import com.masai.dao.WalletDao;
+import com.masai.exceptions.BeneficiaryException;
 import com.masai.model.BeneficiaryDetails;
 import com.masai.model.Customer;
 import com.masai.model.Wallet;
 
-
 @Service
 public class BeneficiaryServiceImpl implements BeneficiaryService{
 	@Autowired
-	private BeneficiaryRepository repository;
+	private BeneficiaryDao bDao;
+	
 	@Autowired
-	private WalletDao repo;
-	@Autowired
-	private CustomerRepository crepo;
+	private WalletDao wDao;
+	
+	@Override
+	public BeneficiaryDetails addBeneficiary(BeneficiaryDetails bd) throws BeneficiaryException {
+		
+		if(bDao.findById(bd.getMobileNumber()).isEmpty()) {
+		
+		Wallet w = bd.getWallet();
+		
+	         w.getBd().add(bd);
+		
+//	wDao.save(w);
+		
+		return bDao.save(bd);
+		}else {
+			throw new BeneficiaryException("Beneficiary already exists");
+		}
+
+	}
 
 	@Override
-	public BeneficiaryDetails addBeneficiary(BeneficiaryDetails beDetails) throws BeneficiaryException {
-		BeneficiaryDetails beneDetails=repository.getByMobile(beDetails.getMobileNumber());
-		
-		if(beneDetails!=null) {
-			throw new BeneficiaryException("Beneficiary is already registered..");
+	public BeneficiaryDetails viewBeneficiary(String mobNo) throws BeneficiaryException {
+		Optional<BeneficiaryDetails> bdetails = bDao.findById(mobNo);
+		if(bdetails.isPresent()) {
+			return bdetails.get();
 		}
+		else {
+			throw new BeneficiaryException("Beneficiary Not found ");
+		}
+	}
+
+	@Override
+	public List<BeneficiaryDetails> viewAllBeneficiary(Customer customer) {
+		Integer id = customer.getWallet().getWalletId();
 		
-		Wallet w=beDetails.getWallet();
-		w.getBd().add(beneDetails);
-		repo.save(w);
+		Optional<Wallet> al = wDao.findById(id);
 		
-		return repository.save(beDetails);
+		Wallet w = al.get();
 		
+		return w.getBd();
 		
 	}
 
 	@Override
-	public BeneficiaryDetails deleteBeneficiary(BeneficiaryDetails beDetails) throws BeneficiaryException {
-		BeneficiaryDetails be=repository.getByMobile(beDetails.getMobileNumber());
-		if(be==null) {
-			throw new BeneficiaryException("Beneficiary not exist with mobile number : "+beDetails.getMobileNumber());
-		}
-		repository.delete(be);
-		return be;
-	}
-
-	@Override
-	public BeneficiaryDetails veiwBeneficiary(String mobileNo) throws BeneficiaryException {
-		BeneficiaryDetails be=repository.getByMobile(mobileNo);
-		if(be==null) {
-			throw new BeneficiaryException("Beneficiary not exist with mobile number : "+mobileNo);
-		}
-		return be;
-	}
-
-	@Override
-	public List<BeneficiaryDetails> veiwAllBeneficiary(Customer customer) throws BeneficiaryException {
-		Customer cus=crepo.findByMobile(customer.getMobile());
-		if(cus==null) {
-			throw new BeneficiaryException("Beneficiary not exist..");
-		}
-		Wallet w=cus.getWallets();
-		List<BeneficiaryDetails> benelist= w.getBd();
+	public BeneficiaryDetails deleteBeneficiary(BeneficiaryDetails bd) throws BeneficiaryException {
 		
-		if(benelist.isEmpty()) {
-			throw new BeneficiaryException("Beneficiary list is empty..");
+		Optional<BeneficiaryDetails> bdetails = bDao.findById(bd.getMobileNumber());
+		
+		if(bdetails.isPresent()) {
+		BeneficiaryDetails b = bdetails.get();
+		
+		Wallet w = bd.getWallet();
+		
+		List<BeneficiaryDetails> blist = w.getBd();
+		
+		blist.remove(bd);
+		
+		bDao.delete(b);
+		
+//		wDao.save(w);
+		
+		return b;
 		}
-		return benelist;
+		else {
+			throw new BeneficiaryException("No such Beneficiary present to delete");
+		}
+		
 	}
 	
 }
