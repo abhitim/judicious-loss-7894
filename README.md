@@ -1,19 +1,18 @@
-# judicious-loss-7894
 
-## Payment wallet Application
+## Payment wallet Application (M-Pay)
 
-### M-Pay
+## Objective:
 
-# Objevtive:
 We made an java backend application to perform CRUD operations related to the payment wallet application .
 
 
 ## Features Or Usecases:
 
 - Customers will be able to park their money in the wallet.
-- Customer should be able to pay different bills using this wallet.
+- Customer will be able to pay different bills using this wallet.
 - They should be able to connect bank account with this payment wallet and add money.
-- customers can able to check balance, deposit money etc.
+- Customers transaction details will be saved.
+- Customers can able to check balance, deposit money, transaction history etc.
 
 
 ## Tech Stacks:
