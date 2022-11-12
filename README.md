@@ -5,6 +5,8 @@
 
 We made an java backend application to perform CRUD operations related to the payment wallet application .
 
+## Entity RelationShiop Diagram Of Application:
+<img src="M_Pay/src/main/resources/ER Diagram.jpeg" alt="E-R Diagram" />
 
 ## Features Or Usecases:
 
