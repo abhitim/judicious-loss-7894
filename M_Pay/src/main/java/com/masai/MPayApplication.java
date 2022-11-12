@@ -7,10 +7,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @EnableSwagger2
-public class paymentApplication {
+public class MPayApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(paymentApplication.class, args);
+		SpringApplication.run(MPayApplication.class, args);
 	}
 
 }

@@ -90,7 +90,6 @@ public class GlobalExceptionHandler {
 		
 	}
 	
-<<<<<<< HEAD
 	
 	
 	
@@ -199,12 +198,4 @@ public class GlobalExceptionHandler {
 	
 	
 	
-=======
-	@ExceptionHandler(Exception.class)
-	public ResponseEntity<MyErrorDetails> globalException(Exception e, WebRequest w) {
-		MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(), "Validation Error",
-				w.getDescription(false));
-		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
-	}
->>>>>>> ce13202857aafa4d6f185307fc3042839f469e1a
 }

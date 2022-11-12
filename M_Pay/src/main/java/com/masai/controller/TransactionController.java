@@ -36,13 +36,8 @@ public class TransactionController {
 	@GetMapping("/transactions")
 	ResponseEntity<List<Transaction>> viewAllTransactionsHandler() throws TransactionNotFoundException{
 		
-<<<<<<< HEAD
 		List<Transaction> Transactions =   transService.viewAllTransactions();
 		return new ResponseEntity<List<Transaction>>(Transactions,HttpStatus.OK);
-=======
-		List<Transaction> transactionsList =   transService.viewAllTransactions();
-		return new ResponseEntity<List<Transaction>>(transactionsList,HttpStatus.ACCEPTED);
->>>>>>> ce13202857aafa4d6f185307fc3042839f469e1a
 	}
 	
 	
@@ -52,8 +47,8 @@ public class TransactionController {
 														@PathVariable String date
 					) throws TransactionNotFoundException, WalletNotFound{
 		
-		List<Transaction> transactions = transService.viewTransactionByDate(walletId, date);
-		return new ResponseEntity<List<Transaction>>(transactions,HttpStatus.OK);
+		List<Transaction> Transactions = transService.viewTransactionByDate(walletId, date);
+		return new ResponseEntity<List<Transaction>>(Transactions,HttpStatus.OK);
 	}
 	
 	
