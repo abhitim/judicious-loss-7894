@@ -33,23 +33,23 @@ We made an java backend application to perform CRUD operations related to the pa
 - You can clone this repository and run the application on local machine.
 - Before running the application make sure that you updated the database properties.
 
-   ## Database properties
+## Database properties
    
-   spring.datasource.url=jdbc:mysql://localhost:3306/`databasename`</br>
-   spring.datasource.username=`Username`</br>
-   spring.datasource.password=`Password`
+  spring.datasource.url=jdbc:mysql://localhost:3306/`databasename`</br>
+  spring.datasource.username=`Username`</br>
+  spring.datasource.password=`Password`
 
-  ## Hibernate properties
+## Hibernate properties
   
   spring.jpa.show-sql=true
   spring.jpa.hibernate.ddl-auto=update
   spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect
 
-  ## Exception properties
+## Exception properties
   spring.mvc.throw-exception-if-no-handler-found=true
   spring.web.resources.add-mappings=false
   
-  #Swagger-Ui properties
+#Swagger-Ui properties
   spring.mvc.pathmatch.matching-strategy=ANT_PATH_MATCHER
 
 ### API - Endpoints
@@ -83,12 +83,12 @@ We made an java backend application to perform CRUD operations related to the pa
 
 ## Roles & Responsibilities :-
 
-- Wallet Module [fw19_0695 - Abhishek Tomar `Team-Leader`](https://github.com/abhitim)
-- Transaction Module [fw19_0650 - Rituraj Nagar `Member`](https://github.com/riturajnagar)
-- Account Module [fw18_0171 - Raushan Kumar `Member`](https://github.com/raushan18314)
-- Bill Payment Module [fw16_693 - Rutuja Atul Kavitake `Member`](https://github.com/rutu175)
-- Beneficiary Module [fp04_048 - Vivek Kumar Mishra `Member`](https://github.com/mishravivek09) 
-- Customer Module [fp04_048 - Vivek Kumar Mishra `Member`](https://github.com/mishravivek09)
+- Wallet Module             [fw19_0695 - Abhishek Tomar `Team-Leader`](https://github.com/abhitim)
+- Transaction Module        [fw19_0650 - Rituraj Nagar `Member`](https://github.com/riturajnagar)
+- Account Module            [fw18_0171 - Raushan Kumar `Member`](https://github.com/raushan18314)
+- Bill Payment Module       [fw16_693 - Rutuja Atul Kavitake `Member`](https://github.com/rutu175)
+- Beneficiary Module        [fp04_048 - Vivek Kumar Mishra `Member`](https://github.com/mishravivek09) 
+- Customer Module           [fp04_048 - Vivek Kumar Mishra `Member`](https://github.com/mishravivek09)
 
 
 ## Learning :-
@@ -104,9 +104,9 @@ We made an java backend application to perform CRUD operations related to the pa
 
 👤 [fw19_0695 - Abhishek Tomar `Team-Leader`](https://github.com/abhitim)
 
-👤 [fp04_048 - Vivek Kumar Mishra `Member`](https://github.com/mishravivek09)
+👤 [fp04_048  - Vivek Kumar Mishra `Member`](https://github.com/mishravivek09)
 
-👤 [fw16_693 - Rutuja Atul Kavitake `Member`](https://github.com/rutu175)
+👤 [fw16_693  - Rutuja Atul Kavitake `Member`](https://github.com/rutu175)
 
 👤 [fw18_0171 - Raushan Kumar `Member`](https://github.com/raushan18314)
 
