@@ -30,4 +30,11 @@ public class GlobalExceptionHandler {
 				e.getBindingResult().getFieldError().getDefaultMessage());
 		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
 	}
+	
+	@ExceptionHandler(Exception.class)
+	public ResponseEntity<MyErrorDetails> globalException(Exception e, WebRequest w) {
+		MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(), "Validation Error",
+				w.getDescription(false));
+		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
+	}
 }
