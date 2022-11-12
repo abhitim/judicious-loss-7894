@@ -82,12 +82,12 @@ We made an java backend application to perform CRUD operations related to the pa
 
 ## Roles & Responsibilities :-
 
-- Wallet Module [fw19_0695 - Abhishek Tomar `Team-Leader`](github.com/abhitim)
-- Account Module [fw19_0650 - Rituraj Nagar `Member`](github.com/riturajnagar)
-- Transaction Module [fw18_0171 - Raushan Kumar `Member`](github.com/raushan18314)
-- Bill Payment Module [fw16_693 - Rutuja Atul Kavitake `Member`](github.com/rutu175)
-- Beneficiary Module [fp04_048 - Vivek Kumar Mishra `Member`](github.com/mishravivek09)
-- Customer Module [fp04_048 - Vivek Kumar Mishra `Member`](github.com/mishravivek09)
+- Wallet Module [fw19_0695 - Abhishek Tomar `Team-Leader`](https://github.com/abhitim)
+- Account Module [fw19_0650 - Rituraj Nagar `Member`](https://github.com/riturajnagar)
+- Transaction Module [fw18_0171 - Raushan Kumar `Member`](https://github.com/raushan18314)
+- Bill Payment Module [fw16_693 - Rutuja Atul Kavitake `Member`](https://github.com/rutu175)
+- Beneficiary Module [fp04_048 - Vivek Kumar Mishra `Member`](https://github.com/mishravivek09)
+- Customer Module [fp04_048 - Vivek Kumar Mishra `Member`](https://github.com/mishravivek09)
 
 
 ## Learning :-
@@ -101,13 +101,13 @@ We made an java backend application to perform CRUD operations related to the pa
 
 ## Team - Members:
 
-👤 [fw19_0695 - Abhishek Tomar `Team-Leader`](github.com/abhitim)
+👤 [fw19_0695 - Abhishek Tomar `Team-Leader`](https://github.com/abhitim)
 
-👤 [fp04_048 - Vivek Kumar Mishra `Member`](github.com/mishravivek09)
+👤 [fp04_048 - Vivek Kumar Mishra `Member`](https://github.com/mishravivek09)
 
-👤 [fw16_693 - Rutuja Atul Kavitake `Member`](github.com/rutu175)
+👤 [fw16_693 - Rutuja Atul Kavitake `Member`](https://github.com/rutu175)
 
-👤 [fw18_0171 - Raushan Kumar `Member`](github.com/raushan18314)
+👤 [fw18_0171 - Raushan Kumar `Member`](https://github.com/raushan18314)
 
-👤 [fw19_0650 - Rituraj Nagar `Member`](github.com/riturajnagar)
+👤 [fw19_0650 - Rituraj Nagar `Member`](https://github.com/riturajnagar)
 
