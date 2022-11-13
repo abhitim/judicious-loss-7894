@@ -3,7 +3,8 @@
 
 ## Objective:
 
-We made an java backend application to perform CRUD operations related to the payment wallet application .
+* We made an java backend application to perform CRUD operations related to the payment wallet application .
+* This project is developed by team of 5 Back-end Developers during project week in [Masai School](www.masaischool.com). 
 
 ## Features Or Usecases:
 ```
@@ -16,12 +17,14 @@ We made an java backend application to perform CRUD operations related to the pa
 
 ## Tech Stacks:
 ```
-- Spring Boot
-- Java
-- Lombok
-- MySql
-- Jpa
-- Swagger-Ui
+* Java
+* Spring Framework
+* Spring Boot
+* Spring Data JPA
+* Hibernate
+* MySQL
+* Lombok
+* Swagger-Ui
 ```
 
 ## Entity Relationship Diagram Of Application:
