@@ -5,27 +5,27 @@
 
 We made an java backend application to perform CRUD operations related to the payment wallet application .
 
-## Entity Relationship Diagram Of Application:
-<img src="M_Pay/src/main/resources/ER Diagram.jpeg" alt="E-R Diagram" />
-
 ## Features Or Usecases:
-
+```
 - Customers will be able to park their money in the wallet.
 - Customer will be able to pay different bills using this wallet.
 - Customers transaction details will be saved.
 - They should be able to connect bank account with this payment wallet and add money.
 - Customers can able to check balance, deposit money, transaction history etc.
-
+```
 
 ## Tech Stacks:
-
+```
 - Spring Boot
 - Java
 - Lombok
 - MySql
 - Jpa
 - Swagger-Ui
+```
 
+## Entity Relationship Diagram Of Application:
+<img src="M_Pay/src/main/resources/ER Diagram.jpeg" alt="E-R Diagram" />
 
 ## Installation & Run
 
@@ -43,17 +43,23 @@ We made an java backend application to perform CRUD operations related to the pa
 
 
 ## Hibernate properties
-  
+
+```
   spring.jpa.show-sql=true
   spring.jpa.hibernate.ddl-auto=update
   spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect
+```
 
 ## Exception properties
+```
   spring.mvc.throw-exception-if-no-handler-found=true
   spring.web.resources.add-mappings=false
+```
   
 #Swagger-Ui properties
+```
   spring.mvc.pathmatch.matching-strategy=ANT_PATH_MATCHER
+```
 
 ### API - Endpoints
 
@@ -85,14 +91,14 @@ We made an java backend application to perform CRUD operations related to the pa
 
 
 ## Roles & Responsibilities :-
-
+```
 - Wallet Module             
 - Transaction Module        
 - Account Module            
 - Bill Payment Module       
 - Beneficiary Module        
 - Customer Module           
-
+```
 
 ## Learning :-
 
