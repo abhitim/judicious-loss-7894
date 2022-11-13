@@ -12,8 +12,8 @@ We made an java backend application to perform CRUD operations related to the pa
 
 - Customers will be able to park their money in the wallet.
 - Customer will be able to pay different bills using this wallet.
-- They should be able to connect bank account with this payment wallet and add money.
 - Customers transaction details will be saved.
+- They should be able to connect bank account with this payment wallet and add money.
 - Customers can able to check balance, deposit money, transaction history etc.
 
 
