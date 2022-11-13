@@ -27,17 +27,20 @@ We made an java backend application to perform CRUD operations related to the pa
 - Swagger-Ui
 
 
-## Installation and Run 
+## Installation & Run
 
-- The Apllication is not hosted on cloud services, so you cannot make api call directly.
-- You can clone this repository and run the application on local machine.
-- Before running the application make sure that you updated the database properties.
+* Before running the API server, you should update the database config inside the [application.properties](M_Pay/src/main/resources/application.properties) file. 
+* Update the port number, username and password as per your local database config.
 
-## Database properties
-   
-  spring.datasource.url=jdbc:mysql://localhost:3306/`databasename`</br>
-  spring.datasource.username=`Username`</br>
-  spring.datasource.password=`Password`
+```
+    server.port=8089
+    spring.datasource.url=jdbc:mysql://localhost:3306/`database name`;
+    spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+    spring.datasource.username=root
+    spring.datasource.password=root
+
+```
+
 
 ## Hibernate properties
   
