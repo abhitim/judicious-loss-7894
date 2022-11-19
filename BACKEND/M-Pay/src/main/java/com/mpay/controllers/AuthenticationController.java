@@ -18,14 +18,12 @@ import com.mpay.services.LoginService;
 import com.mpay.services.CustomerService;
 
 @RestController
-@RequestMapping("/digipocket")
+@RequestMapping("/mpay")
 public class AuthenticationController {
 
 	@Autowired
 	private LoginService lService;
 
-	@Autowired
-	private CustomerService uService;
 
 	@PostMapping("/login")
 	public ResponseEntity<String> loginIntoAccountHandler(@RequestBody LoginDTO login) throws LoginException {
@@ -39,10 +37,6 @@ public class AuthenticationController {
 		return new ResponseEntity<String>(str, HttpStatus.OK);
 	}
 
-	@PostMapping("/register")
-	public ResponseEntity<Customer> registerAccountHandler(@RequestBody Customer customer) throws CustomerException {
-		Customer cus = uService.RegisterCustomer(customer);
-		return new ResponseEntity<Customer>(cus, HttpStatus.OK);
-	}
+	
 
 }

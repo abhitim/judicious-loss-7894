@@ -21,7 +21,7 @@ import com.mpay.model.Beneficiary;
 import com.mpay.services.BenificiaryService;
 
 @RestController
-@RequestMapping("/digipocket/beneficiaryservice")
+@RequestMapping("/mpay/beneficiaryservice")
 public class BeneficiaryController {
 
 	@Autowired

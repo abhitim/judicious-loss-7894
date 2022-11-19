@@ -21,7 +21,7 @@ import com.mpay.model.Wallet;
 import com.mpay.services.WalletService;
 
 @RestController
-@RequestMapping("/digipocket/wallet")
+@RequestMapping("/mpay/wallet")
 public class WalletController {
 
 	@Autowired

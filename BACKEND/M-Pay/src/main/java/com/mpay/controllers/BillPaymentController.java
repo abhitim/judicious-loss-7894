@@ -22,7 +22,7 @@ import com.mpay.repositories.WalletRepo;
 import com.mpay.services.BillPaymentService;
 
 @RestController
-@RequestMapping("/digipocket/billservice")
+@RequestMapping("/mpay/billservice")
 public class BillPaymentController {
 
 	@Autowired

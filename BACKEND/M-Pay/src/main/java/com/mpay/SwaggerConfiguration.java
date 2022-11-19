@@ -15,8 +15,8 @@ import springfox.documentation.spring.web.plugins.Docket;
 public class SwaggerConfiguration {
 
 	private ApiInfo apiInfo() {
-		return new ApiInfo("Project DIGI Pocket API", "REST APIs for Online Wallet Application. " + "\n"
-				+ "The API will return the response status code, response headers, and potentially a response body.",
+		return new ApiInfo("M-Pay API", "REST APIs for Online Payment Wallet Application. " + "\n"
+				+ "The API will return the response status code, response headers, and a response body.",
 				"1.0",
 				"Terms of service",
 				null, "License of API",

@@ -20,7 +20,7 @@ import com.mpay.model.TransactionDTO;
 import com.mpay.services.TransactionService;
 
 @RestController
-@RequestMapping("/digipocket/transactionservice")
+@RequestMapping("/mpay/transactionservice")
 public class TransactionController {
 
 	@Autowired

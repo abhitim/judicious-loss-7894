@@ -9,11 +9,11 @@
 		<version>2.7.5</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.project</groupId>
-	<artifactId>Yet_to_Decide</artifactId>
+	<groupId>com.mpay</groupId>
+	<artifactId>Payment_Wallet_Application</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Yet_to_Decide</name>
-	<description>Demo project for Spring Boot</description>
+	<name>Payment_Wallet_Application</name>
+	<description>Payment_Wallet_Application for Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
