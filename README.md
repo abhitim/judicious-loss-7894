@@ -77,6 +77,8 @@ We made a online payment application where customer can open his account and add
 `/depositmoney/{amount}/{Accno}`
 `/getcustomerbywalletid/{walletId}`
 
+## Entity Relationship Diagram
+<img src = "BACKEND/M-Pay/src/main/resources/ER Diagram.jpeg">
 
 ## Roles & Responsibilities :-
 
